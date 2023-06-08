@@ -34,7 +34,7 @@
 [include Adaptive_Purge.cfg]
 [include auto_z.cfg]
 [include nozzle_brush.cfg]
-[include filament_sensor.cfg]
+[include runoutunklicky.cfg]
 [include config_backup.cfg]
 
 [exclude_object]
@@ -61,7 +61,7 @@ accel_chip: adxl345
 probe_points:
   175,175,30
 
-[input_shaper]
+#[input_shaper]
 #shaper_freq_x: 46.2  #50.2    #51 #47.4 
 #shaper_type_x: mzv
 #shaper_freq_y: 57.8    #39.4    #38.4 #38.2   #45  # 51 
@@ -293,7 +293,7 @@ enable_pin: !PD4
 ##  If you ask for 100mm of filament, but in reality it is 98mm:
 ##  rotation_distance = <previous_rotation_distance> * <actual_extrude_distance> / 100
 ##  22.6789511 is a good starting point
-rotation_distance: 22.4521616    #22.6789511   #Bondtech 5mm Drive Gears
+rotation_distance: 22.4521616 #22.6789511   #Bondtech 5mm Drive Gears
 ##  Update Gear Ratio depending on your Extruder Type
 ##  Use 50:10 for Stealthburner/Clockwork 2
 ##  Use 50:17 for Afterburner/Clockwork (BMG Gear Ratio)
@@ -467,7 +467,7 @@ gcode_id: chamber_th
 pin: PG15
 x_offset: 0
 y_offset: 25.0
-#z_offset: 0
+z_offset: 0
 speed: 8
 samples: 2
 samples_result: median
@@ -711,7 +711,7 @@ gcode:
         {% endif %}
         M117 QGL...
         QUAD_GANTRY_LEVEL
-#        G28 Z
+        G28 Z
     {% endif %}
 
 [gcode_macro T0]
@@ -724,7 +724,7 @@ gcode:
 #   Use PRINT_START for the slicer starting script - please customize for your slicer of choice
 gcode:
 
-      
+    SET_FILAMENT_SENSOR SENSOR=filament_sensor ENABLE=1   
     G21                            ;Use mmm
     G90                            ;Use absolute coordiantes
     M107                           ;Turn off part fan
@@ -746,7 +746,7 @@ gcode:
 
     Attach_Probe_Lock #prevent probe docking until unlocked, from klicky 
     
-    #QUAD_GANTRY_LEVEL
+    # QUAD_GANTRY_LEVEL
     _CQGL
 
     # STATUS_HOMING
@@ -797,7 +797,7 @@ gcode:
 #     G1 Z5 F1000
 # #    G1 X59.5 E0 F15000    ; Wipe back to break string.
 #     G1 X3 E0 F20000   ; Wipe forward to break string.
-    SET_FILAMENT_SENSOR SENSOR=filament_sensor ENABLE=1
+
     UPDATE_DELAYED_GCODE ID=clear_lcd_message DURATION=5
 
 
@@ -1101,8 +1101,7 @@ gcode:
 #*# [stepper_z]
 #*# position_endstop = -0.240
 #*#
-#*# [probe]
-#*# z_offset = -0.60
+
 #*#
 #*# [bed_mesh Soaked]
 #*# version = 1
@@ -1130,3 +1129,21 @@ gcode:
 #*# shaper_freq_x = 45.2
 #*# shaper_type_y = mzv
 #*# shaper_freq_y = 38.6
+#*#
+#*# [bed_mesh default]
+#*# version = 1
+#*# points =
+#*# 	  0.000000, 0.007500, -0.004375
+#*# 	  0.000000, -0.006875, -0.013125
+#*# 	  0.000000, -0.006250, 0.023125
+#*# 	  0.005625, -0.000000, 0.007500
+#*# x_count = 3
+#*# y_count = 4
+#*# mesh_x_pps = 2
+#*# mesh_y_pps = 2
+#*# algo = lagrange
+#*# tension = 0.2
+#*# min_x = 136.14
+#*# max_x = 213.86
+#*# min_y = 116.05
+#*# max_y = 233.95

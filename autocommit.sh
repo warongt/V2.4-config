@@ -30,13 +30,10 @@ mainsail_folder=~/mainsail
 ### Path to your Fluidd folder, by default that is '~/fluidd'
 #fluidd_folder=~/fluidd
 
-#<<<<<<< HEAD
-#=======
 ### The branch of the repository that you want to save your config
 ### By default that is 'master'
 branch=master
 
-#>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
 #####################################################################
 #####################################################################
 
@@ -76,19 +73,11 @@ grab_version(){
 
 push_config(){
   cd $config_folder
-#<<<<<<< HEAD
-  git pull origin master
-  git add .
-  current_date=$(date +"%Y-%m-%d %T")
-  git commit -m "Autocommit from $current_date" -m "$m1" -m "$m2" -m "$m3" -m "$m4"
-  git push origin master
-=======
   git pull origin $branch
   git add .
   current_date=$(date +"%Y-%m-%d %T")
   git commit -m "Autocommit from $current_date" -m "$m1" -m "$m2" -m "$m3" -m "$m4"
   git push origin $branch
-#>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
 }
 
 grab_version

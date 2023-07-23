@@ -2,6 +2,10 @@
 host = 0.0.0.0
 port = 7125
 max_upload_size = 1024
+<<<<<<< HEAD
+=======
+klippy_uds_address = /home/pi/printer_data/comms/klippy.sock
+>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
 
 [file_manager]
 enable_object_processing = True
@@ -35,7 +39,11 @@ managed_services = klipper
 
 [announcements]
 subscriptions = 
+<<<<<<< HEAD
 	mainsail
+=======
+	octoeverywhere
+>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
 
 [update_manager]
 refresh_interval = 168
@@ -47,12 +55,27 @@ channel = stable
 repo = mainsail-crew/mainsail
 path = ~/mainsail
 
+<<<<<<< HEAD
+=======
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
 [update_manager crowsnest]
 type = git_repo
 path = ~/crowsnest
 origin = https://github.com/mainsail-crew/crowsnest.git
+<<<<<<< HEAD
 primary_branch = legacy/v3
 install_script = tools/install.sh
+=======
+managed_services = crowsnest
+install_script = tools/pkglist.sh
+>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
 
 [update_manager sonar]
 type = git_repo
@@ -60,6 +83,10 @@ path = ~/sonar
 origin = https://github.com/mainsail-crew/sonar.git
 primary_branch = main
 managed_services = sonar
+<<<<<<< HEAD
+=======
+install_script = tools/install.sh
+>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
 
 [update_manager KlipperScreen]
 type = git_repo
@@ -80,3 +107,27 @@ managed_services =
 origin = https://github.com/gab-3d/Gab3d-Klipper-Utilities.git
 install_script = install.sh
 
+<<<<<<< HEAD
+=======
+[update_manager mobileraker]
+type = git_repo
+path = /home/pi/mobileraker_companion
+origin = https://github.com/Clon1998/mobileraker_companion.git
+primary_branch = main
+managed_services = mobileraker
+env = /home/pi/mobileraker-env/bin/python
+requirements = scripts/mobileraker-requirements.txt
+install_script = scripts/install-mobileraker-companion.sh
+
+[update_manager octoeverywhere]
+type = git_repo
+channel = beta
+path = /home/pi/octoeverywhere
+origin = https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+env = /home/pi/octoeverywhere-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	octoeverywhere
+
+>>>>>>> 928e452 (Autocommit from 2023-07-24 01:29:24)
